@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Even Numbers from 1 to 10</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #even-numbers {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #e6f7ff;
+      border: 2px solid #66b3ff;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    .even-number {
+      color: #007acc;
+      font-size: 20px;
+      margin: 5px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005f99;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Even Numbers from 1 to 10</h1>
+
+  <button onclick="showEvenNumbers()">Show Even Numbers</button>
+
+  <div id="even-numbers"></div>
+
+  <script>
+    function showEvenNumbers() {
+      const container = document.getElementById('even-numbers');
+      container.innerHTML = ''; // Clear previous content if clicked again
+
+      for (let i = 1; i <= 10; i++) {
+        if (i % 2 === 0) {
+          const numElement = document.createElement('div');
+          numElement.className = 'even-number';
+          numElement.textContent = i;
+          container.appendChild(numElement);
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
