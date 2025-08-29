@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Styled Form with DOM</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef1f5;
+      padding: 30px;
+    }
+
+    /* Default styling - will be enhanced via JS */
+    #formHeading {
+      margin-bottom: 20px;
+    }
+
+    .form-container {
+      width: 400px;
+      margin: auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    .highlight {
+      background-color: #fff7b3; /* Light yellow */
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 id="formHeading">User Information Form</h2>
+
+  <div class="form-container" id="formContainer">
+    <form id="userForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" />
+
+      <button type="button" onclick="handleForm()">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    function handleForm() {
+      const nameField = document.getElementById('name');
+      const emailField = document.getElementById('email');
+
+      // Clear previous highlights
+      nameField.classList.remove('highlight');
+      emailField.classList.remove('highlight');
+
+      let isValid = true;
+
+      if (nameField.value.trim() === "") {
+        nameField.classList.add('highlight');
+        isValid = false;
+      }
+
+      if (emailField.value.trim() === "") {
+        emailField.classList.add('highlight');
+        isValid = false;
+      }
+
+      // Style the heading using DOM
+      const heading = document.getElementById("formHeading");
+      heading.style.color = "#0077cc";
+      heading.style.fontSize = "28px";
+      heading.style.textAlign = "center";
+
+      // Style the form container using DOM
+      const formContainer = document.getElementById("formContainer");
+      formContainer.style.border = "2px solid #0077cc";
+      formContainer.style.padding = "25px";
+      formContainer.style.backgroundColor = "#f9f9f9";
+
+      // Bold all labels using DOM
+      const labels = document.querySelectorAll("label");
+      labels.forEach(label => {
+        label.style.fontWeight = "bold";
+      });
+
+      // Optional: Alert on success
+      if (isValid) {
+        alert("Form submitted successfully!");
+        document.getElementById("userForm").reset();
+      }
+    }
+  </script>
+
+</body>
+</html>
