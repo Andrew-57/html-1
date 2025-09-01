@@ -1,25 +1,69 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Fruit Array Demo</title>
+  <title>Fruit Array Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    button {
+      margin: 5px;
+    }
+    #output {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-<script>
+
+  <h1>Fruit Array Operations</h1>
+
+  <button onclick="addFruitEnd()">Push (Add to End)</button>
+  <button onclick="removeFruitEnd()">Pop (Remove from End)</button>
+  <button onclick="addFruitStart()">Unshift (Add to Start)</button>
+  <button onclick="removeFruitStart()">Shift (Remove from Start)</button>
+
+  <div id="output"></div>
+
+  <script>
     let fruits = ["Apple", "Banana", "Mango"];
-    console.log("Initial array:", fruits);
-    fruits.push("Orange");
-    console.log("After push('Orange'):", fruits);
-    let poppedFruit = fruits.pop();
-    console.log("After pop():", fruits);
-    console.log("Popped fruit:", poppedFruit);
-    fruits.unshift("Pineapple");
-    console.log("After unshift('Pineapple'):", fruits);
-    let shiftedFruit = fruits.shift();
-    console.log("After shift():", fruits);
-    console.log("Shifted fruit:", shiftedFruit);
-    console.log("Final array length:", fruits.length);
-    console.log("Final array:", fruits);
+
+    function updateDisplay() {
+      const output = document.getElementById("output");
+      output.innerHTML = `
+        <strong>Current Fruits:</strong> ${fruits.join(", ")}<br>
+        <strong>Length:</strong> ${fruits.length}
+      `;
+    }
+
+    function addFruitEnd() {
+      fruits.push("Orange");
+      updateDisplay();
+    }
+
+    function removeFruitEnd() {
+      fruits.pop();
+      updateDisplay();
+    }
+
+    function addFruitStart() {
+      fruits.unshift("Strawberry");
+      updateDisplay();
+    }
+
+    function removeFruitStart() {
+      fruits.shift();
+      updateDisplay();
+    }
+
+    // Initial display
+    updateDisplay();
   </script>
+
 </body>
 </html>
+
